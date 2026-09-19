@@ -71,17 +71,17 @@ A certificate can be unlocked after completing the required learning levels and 
 ## 🔄 Adaptive Learning Flow
 
 Start
-  ↓
+->
 Diagnostic / Practice
-  ↓
+  ->
 Analyze Performance
-  ↓
+ ->
 Identify Weak Topics
-  ↓
+ ->
 Adjust Question Difficulty
-  ↓
+->
 Practice Again
-  ↓
+->
 Update Mastery
-  ↓
+->
 Recommend Next Activity
