@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#2a0f5c">
+  <meta name="description" content="APTITRIO — Your Adaptive Journey from Beginner to Interview Ready">
+  <title>APTITRIO — Your Adaptive Journey from Beginner to Interview Ready</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Sora:wght@600;700;800&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="is-auth" data-route="">
+  <a class="skip-link" href="#app">Skip to main content</a>
+
+  <!-- Shared SVG defs (logo gradient) -->
+  <svg class="svg-defs" width="0" height="0" aria-hidden="true" focusable="false">
+    <defs>
+      <linearGradient id="aptLogoGradient" x1="0" y1="0" x2="48" y2="48" gradientUnits="userSpaceOnUse">
+        <stop offset="0" stop-color="#8B5CF6"></stop>
+        <stop offset="1" stop-color="#3B1585"></stop>
+      </linearGradient>
+    </defs>
+  </svg>
+
+  <div class="bg-orbs" aria-hidden="true">
+    <span class="orb orb--one"></span>
+    <span class="orb orb--two"></span>
+  </div>
+
+  <noscript>
+    <p class="noscript">APTITRIO needs JavaScript enabled to run.</p>
+  </noscript>
+
+  <!-- ====================== GLOBAL NAVBAR (single, reusable) ====================== -->
+  <header class="navbar" id="navbar" hidden>
+    <div class="navbar__inner">
+      <a class="navbar__brand" href="#/home" aria-label="APTITRIO — Home">
+        <span data-component="logo" data-size="md" data-inverse></span>
+      </a>
+
+      <nav class="navbar__menu" id="navMenu" aria-label="Primary">
+        <ul class="navbar__links">
+          <li><a class="nav-link" href="#/home" data-nav="home">Home</a></li>
+          <li><a class="nav-link" href="#/levels" data-nav="levels">Levels</a></li>
+          <li><a class="nav-link" href="#/tests" data-nav="tests">Tests</a></li>
+          <li><a class="nav-link" href="#/progress" data-nav="progress">Progress</a></li>
+        </ul>
+      </nav>
+
+      <div class="navbar__right">
+        <a class="navbar__profile" id="navProfile" href="#/profile" data-nav="profile" aria-label="Open profile">
+          <span id="navAvatar"></span>
+        </a>
+        <button class="navbar__logout" id="logoutBtn" type="button" data-action="logout" aria-label="Log out" title="Log out">
+          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path><polyline points="16 17 21 12 16 7"></polyline><line x1="21" y1="12" x2="9" y2="12"></line></svg>
+        </button>
+        <button class="navbar__toggle" id="menuToggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="navMenu">
+          <span class="navbar__bar"></span>
+          <span class="navbar__bar"></span>
+          <span class="navbar__bar"></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ====================== APP PAGES ====================== -->
+  <main class="app-main" id="app" tabindex="-1">
+
+    <!-- /login -->
+    <section class="page page--auth" id="page-login" data-page="login" hidden aria-labelledby="loginTitle">
+      <div class="auth">
+        <aside class="auth__brand">
+          <span data-component="logo" data-size="lg" data-inverse></span>
+          <h2 class="auth__headline">Your Adaptive Journey from Beginner to Interview Ready</h2>
+          <p class="auth__lead">Master aptitude step by step with a learning path that adapts to how you think.</p>
+          <ul class="auth__points">
+            <li>Structured roadmap from Beginner to Advanced</li>
+            <li>Practice that adapts to your strengths</li>
+            <li>Track progress across every subject</li>
+          </ul>
+        </aside>
+
+        <div class="auth__panel">
+          <div class="auth-card">
+            <h1 id="loginTitle" class="auth-card__title" tabindex="-1">Welcome back</h1>
+            <p class="auth-card__sub">Log in to continue your quest.</p>
+
+            <form id="loginForm" novalidate>
+              <div class="field">
+                <label for="loginIdentifier">Username or email</label>
+                <input class="input" id="loginIdentifier" name="identifier" type="text" autocomplete="username" placeholder="you@example.com" aria-describedby="loginIdentifier-error">
+                <p class="field__error" id="loginIdentifier-error" role="alert"></p>
+              </div>
+
+              <div class="field">
+                <label for="loginPassword">Password</label>
+                <div class="input-group">
+                  <input class="input" id="loginPassword" name="password" type="password" autocomplete="current-password" placeholder="Enter your password" aria-describedby="loginPassword-error">
+                  <button type="button" class="input-group__toggle" data-toggle-password="loginPassword" aria-label="Show password">Show</button>
+                </div>
+                <p class="field__error" id="loginPassword-error" role="alert"></p>
+              </div>
+
+              <p class="form-error" id="loginFormError" role="alert" hidden></p>
+
+              <button type="submit" class="btn btn--primary btn--lg btn--block" id="loginSubmit">
+                <span class="btn__label">Login</span>
+                <span class="btn__spinner" aria-hidden="true"></span>
+              </button>
+            </form>
+
+            <div class="auth-card__divider"><span>New to APTITRIO?</span></div>
+            <a class="btn btn--secondary btn--lg btn--block" href="#/signup" id="goSignup"><span class="btn__label">Sign up</span></a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- /signup -->
+    <section class="page page--auth" id="page-signup" data-page="signup" hidden aria-labelledby="signupTitle">
+      <div class="auth">
+        <aside class="auth__brand">
+          <span data-component="logo" data-size="lg" data-inverse></span>
+          <h2 class="auth__headline">Start your adaptive journey today</h2>
+          <p class="auth__lead">Create your account and unlock a learning path built around you.</p>
+          <ul class="auth__points">
+            <li>Free to get started</li>
+            <li>Your progress is saved automatically</li>
+            <li>Beginner level unlocked from day one</li>
+          </ul>
+        </aside>
+
+        <div class="auth__panel">
+          <div class="auth-card">
+            <h1 id="signupTitle" class="auth-card__title" tabindex="-1">Create your account</h1>
+            <p class="auth-card__sub">It only takes a minute.</p>
+
+            <form id="signupForm" novalidate>
+              <div class="field">
+                <label for="signupName">Name</label>
+                <input class="input" id="signupName" name="name" type="text" autocomplete="name" placeholder="Your full name" aria-describedby="signupName-error">
+                <p class="field__error" id="signupName-error" role="alert"></p>
+              </div>
+
+              <div class="field">
+                <label for="signupIdentifier">Username or email</label>
+                <input class="input" id="signupIdentifier" name="identifier" type="text" autocomplete="username" placeholder="you@example.com" aria-describedby="signupIdentifier-error">
+                <p class="field__error" id="signupIdentifier-error" role="alert"></p>
+              </div>
+
+              <div class="field">
+                <label for="signupPassword">Password</label>
+                <div class="input-group">
+                  <input class="input" id="signupPassword" name="password" type="password" autocomplete="new-password" placeholder="At least 6 characters" aria-describedby="signupPassword-error">
+                  <button type="button" class="input-group__toggle" data-toggle-password="signupPassword" aria-label="Show password">Show</button>
+                </div>
+                <p class="field__error" id="signupPassword-error" role="alert"></p>
+              </div>
+
+              <div class="field">
+                <label for="signupConfirm">Confirm password</label>
+                <div class="input-group">
+                  <input class="input" id="signupConfirm" name="confirm" type="password" autocomplete="new-password" placeholder="Re-enter your password" aria-describedby="signupConfirm-error">
+                  <button type="button" class="input-group__toggle" data-toggle-password="signupConfirm" aria-label="Show password">Show</button>
+                </div>
+                <p class="field__error" id="signupConfirm-error" role="alert"></p>
+              </div>
+
+              <p class="form-error" id="signupFormError" role="alert" hidden></p>
+
+              <button type="submit" class="btn btn--primary btn--lg btn--block" id="signupSubmit">
+                <span class="btn__label">Create account</span>
+                <span class="btn__spinner" aria-hidden="true"></span>
+              </button>
+            </form>
+
+            <p class="auth-card__foot">Already have an account? <a href="#/login" id="goLogin">Log in</a></p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- /home -->
+    <section class="page" id="page-home" data-page="home" hidden aria-labelledby="welcomeHeading">
+      <div class="page-container">
+        <header class="page-header">
+          <p class="eyebrow">Dashboard</p>
+          <h1 id="welcomeHeading" tabindex="-1">Welcome back!</h1>
+          <p class="page-subtitle">Your Adaptive Journey from Beginner to Interview Ready</p>
+        </header>
+
+        <div class="summary-grid" id="summaryCards" aria-label="Your stats"></div>
+
+        <div class="quest-slot" id="questCard"></div>
+
+        <div class="section-head">
+          <h2>Subject Progress</h2>
+          <p>Keep every skill moving forward.</p>
+        </div>
+        <div class="subject-grid" id="subjectGrid"></div>
+      </div>
+    </section>
+
+    <!-- /levels -->
+    <section class="page" id="page-levels" data-page="levels" hidden aria-labelledby="levelsTitle">
+      <div class="page-container">
+        <header class="page-header">
+          <p class="eyebrow">Learning path</p>
+          <h1 id="levelsTitle" tabindex="-1">Levels</h1>
+          <p class="page-subtitle">Progress through three levels, from strong foundations to interview-grade problem solving.</p>
+        </header>
+        <div class="level-grid" id="levelsGrid"></div>
+      </div>
+    </section>
+
+    <!-- /levels/beginner | /levels/intermediate | /levels/advanced (one shared template) -->
+    <section class="page" id="page-level" data-page="level" hidden aria-labelledby="levelTitle">
+      <div class="page-container">
+        <a class="back-link" href="#/levels">&larr; All levels</a>
+        <header class="level-hero" id="levelHero"></header>
+        <div class="level-lock" id="levelLock"></div>
+        <ol class="roadmap" id="levelRoadmap" aria-label="Learning roadmap"></ol>
+      </div>
+    </section>
+
+    <!-- /tests  /progress  /profile : mount points for other modules -->
+    <section class="page" id="page-tests" data-page="tests" hidden>
+      <div id="testsRoot"></div>
+    </section>
+
+    <section class="page" id="page-progress" data-page="progress" hidden>
+      <div id="progressRoot"></div>
+    </section>
+
+    <section class="page" id="page-profile" data-page="profile" hidden>
+      <div id="profileRoot"></div>
+    </section>
+
+    <!-- Any extra route registered by another module (e.g. #/practice/<topicId>) -->
+    <section class="page" id="page-module" data-page="module" hidden>
+      <div id="moduleRoot"></div>
+    </section>
+
+    <!-- 404 -->
+    <section class="page" id="page-notfound" data-page="notfound" hidden>
+      <div id="notFoundRoot"></div>
+    </section>
+  </main>
+
+  <footer class="app-footer" id="appFooter">
+    <p>&copy; APTITRIO &middot; Your Adaptive Journey from Beginner to Interview Ready</p>
+  </footer>
+
+  <div class="toast-region" id="toastRegion" aria-live="polite" aria-atomic="false"></div>
+
+  <script src="script.js"></script>
+</body>
+</html>
