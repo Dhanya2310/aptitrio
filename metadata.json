@@ -1,0 +1,6 @@
+{
+  "name": "Aptitrio",
+  "description": "Adaptive gamified aptitude learning platform with roadmaps, dynamic quest difficulty, anti-distraction test mode, 40+ interview test sets, and verifiable certificates.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
